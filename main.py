@@ -25,7 +25,7 @@ def main() :
                         else 9/(10*len(options)-1) for j in options]     
                 cumDist = [sum(cumDist[:j]) for j in range(1, len(cumDist)+1)] 
                 lineIndex = i
-                selection = uniform(0,1)
+                selection = uniform(0,cumDist[-1]) # Safeguard if regex fails
                 s = 0
                 while selection > cumDist[s] : 
                     s += 1 
@@ -33,7 +33,7 @@ def main() :
                 break
     newData = data
     newData[lineIndex] = newString
-    newData.append(f"// Last updated at {datetime.now().strftime('%d:%m:%Y:%H:%M:%S')}")
+    newData[-1] = f"// Last updated at {datetime.now().strftime('%d:%m:%Y:%H:%M:%S')}\n"
     with open(settingsLocation, 'w') as f : 
         f.writelines(newData)
     return 1 
