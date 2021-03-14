@@ -15,13 +15,15 @@ The downside of this is that you need a bit of VB scripting to prevent the .bat 
 
 ## Setup 
 
-Use the `.paths` file to specify the location of the `settings.json` folder on your machine. Leave a one line space, then add the paths of images that you want to use. Again, this is a super rough script, so there's no validation here.  
+Use the `.paths` file to specify the location of the `settings.json` folder on your machine. Leave a one line space, then add the paths of images that you want to use.
+
+Optionally you can include the opacity of your image after the path. If this is not included then the current opacity will be kept for all images, however if it is included then images will update with their corresponding opacities.
 
 ```
 {Windows terminal filepath}/LocalState/settings.json
 
-{Image path}/example.jpg
-{Second image path}/example2.png
+{Image path}/example.jpg {Opacity}
+{Second image path}/example2.png 0.3
 ...
 ```
 
