@@ -16,7 +16,7 @@ def getConfig() :
         if z :
             o.append((z.groups()[0], z.groups()[1]))
         elif y :
-            o.append((y.groups()[0], 0.2))
+            o.append((y.groups()[0], 0))
     return (o, sl)
 
 
@@ -46,8 +46,9 @@ def main() :
     while selection > cumDist[s] :
         s += 1
 
+    yVal = yData[1] if not options[s][1] else options[s][1]
     newImage = f'{zData[0]}{options[s][0]}{zData[2]}'
-    newOpacity = f'{yData[0]}{options[s][1]}{yData[2]}'
+    newOpacity = f'{yData[0]}{yVal}{yData[2]}'
     logString = f'Sample {selection} over distribution {cumDist}'
 
     newData = data
